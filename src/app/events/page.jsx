@@ -3,7 +3,7 @@ async function getMinistries() {
   return await res.json();
 }
 
-const Ministries = async () => {
+const Events = async () => {
   const ministries = await getMinistries();
   console.log();
 
@@ -23,4 +23,4 @@ const Ministries = async () => {
   )
 }
 
-export default Ministries
+export default Events
