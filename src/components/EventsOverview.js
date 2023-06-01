@@ -39,15 +39,15 @@ const EventsOverview = async () => {
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-600">
                   {event.attributes.Name}
                 </h3>
-                <p className="mt-3 text-gray-800 dark:text-gray-600">
+                <div className="mt-3 text-gray-800 dark:text-gray-600">
                   <ReactMarkdown>{event.attributes.Description}</ReactMarkdown>
-                </p>
-                <p className="mt-5 inline-flex items-center gap-x-1.5 text-gray dark:text-gray-600 decoration-2 group-hover:underline font-medium">
+                </div>
+                <div className="mt-5 inline-flex items-center gap-x-1.5 text-gray dark:text-gray-600 decoration-2 group-hover:underline font-medium">
                     Find out more
                   <svg className="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
-                </p>
+                </div>
               </div>
             </Link>
             {/* <!-- End Card --> */}
