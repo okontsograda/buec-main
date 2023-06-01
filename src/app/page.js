@@ -5,8 +5,6 @@ import LiveBanner from '../components/LiveBanner'
 
 export default function Home() {
 
-
-
   return (
     <main className="h-full">
 
