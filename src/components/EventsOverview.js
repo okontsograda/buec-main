@@ -1,4 +1,5 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import Link from "next/link";
 
 async function getEvents() {
   const events = await fetch ('https://www.admin.buec.life/api/event?populate=*');
@@ -7,7 +8,7 @@ async function getEvents() {
 
 const EventsOverview = async () => {
   const events = await getEvents();
-  // console.log(events.data[0].attributes.image.data[0].attributes.url)
+
   return (
     <div className='max-w-screen'>
       {/* <!-- Card Blog --> */}
@@ -26,7 +27,7 @@ const EventsOverview = async () => {
           return ( 
           <div>
             {/* <!-- Card --> */}
-            <a className="group rounded-xl overflow-hidden" href="#">
+            <Link className="group rounded-xl overflow-hidden" href={`/events/${event.attributes.Name}`}>
               <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
                 <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`https://admin.buec.life/${event.attributes.image.data[0].attributes.url}`} alt="Kids VBS Camp" />
                 <span className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
@@ -48,7 +49,7 @@ const EventsOverview = async () => {
                   </svg>
                 </p>
               </div>
-            </a>
+            </Link>
             {/* <!-- End Card --> */}
 
           </div>

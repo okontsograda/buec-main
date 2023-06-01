@@ -1,14 +1,11 @@
-"use client"
-import { useEffect } from 'react'
 
 import EventsOverview from '../components/EventsOverview'
 import SermonsOverview from '../components/SermonsOverview'
+import LiveBanner from '../components/LiveBanner'
 
 export default function Home() {
 
-  useEffect(() => {
-    import('preline')
-  })
+
 
   return (
     <main className="h-full">
@@ -32,6 +29,8 @@ export default function Home() {
             </div>
             <div id="navbar-collapse-with-animation" className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
               <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+              <LiveBanner/>
+
                 <a className="font-medium text-white" href="#" aria-current="page">Home</a>
                 <a className="font-medium text-gray-400 hover:text-gray-500" href="/ministries">Ministries</a>
                 <a className="font-medium text-gray-400 hover:text-gray-500" href="/about">About</a>
