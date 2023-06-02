@@ -3,16 +3,23 @@ import { BsCalendar, BsClock } from 'react-icons/bs'
 
 async function getEventDetails(eventId) {
 
-  const eventDetails = await fetch(`https://www.admin.buec.life/api/event/${eventId}`);
+  const response = await fetch(`https://www.admin.buec.life/api/event/${eventId}`);
+  const eventDetails =  await response.json();
 
-  return await eventDetails.json();
+  return eventDetails;
 }
 
-const EventPage = async ({ params }) => {
-  const eventReturn = await getEventDetails(params.name);
-  const eventDetails = eventReturn.data.attributes;
-  const eventDate = new Date(eventDetails.date);
-  const updatedDate = new Date(eventDetails.updatedAt).toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" });
+const EventPage = async ( {params} ) => {
+  console.log("Params: " + params.id)
+  console.log("Decoded Params: " + decodeURIComponent(params.id))
+  try {
+    const eventReturn =  getEventDetails(params.id);
+    // const eventDate = new Date(eventReturn.data.attributes.date);
+    console.log(eventReturn.data)
+  } catch (error) {
+    console.log("Error in fetching event details: " + error)
+  }
+  // const updatedDate = new Date(eventDetails.updatedAt).toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" });
 
   return (
     <>
@@ -27,23 +34,23 @@ const EventPage = async ({ params }) => {
             </Link>
             <div className="max-w-3xl text-center mx-auto">
               <h1 className="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                {eventDetails.name}
+                {/* {eventReturn.data.attributes.name} */}
               </h1>
-              <div class="flex space-x-12 lg:space-x-24 justify-center my-12 lg:my-24">
+              <div className="flex space-x-12 lg:space-x-24 justify-center my-12 lg:my-24">
                 <div>
-                  <div class="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full bg-blue-100 dark:bg-white">
+                  <div className="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full bg-blue-100 dark:bg-white">
                     <BsCalendar size={30} />
                   </div>
-                  <div class="flex-shrink-0">
-                    <h3 class="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventDate.toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" })}</h3>
+                  <div className="flex-shrink-0">
+                    {/* <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventDate.toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" })}</h3> */}
                   </div>
                 </div>
                 <div>
-                  <div class="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full bg-blue-100 dark:bg-white">
+                  <div className="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full bg-blue-100 dark:bg-white">
                     <BsClock size={30} />
                   </div>
-                  <div class="flex-shrink-0">
-                    <h3 class="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventDetails.event_time}</h3>
+                  <div className="flex-shrink-0">
+                    {/* <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventDetails.event_time}</h3> */}
                   </div>
                 </div>
               </div>
@@ -63,7 +70,7 @@ const EventPage = async ({ params }) => {
                 <h2 className="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-gray-600 text-center my-12 lg:my-24 lg:mb-12">Event Information:</h2>
 
                 <div className="flex items-center gap-x-5">
-                  <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-500">Last updated: {updatedDate}</p>
+                  {/* <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-500">Last updated: {updatedDate}</p> */}
                 </div>
 
                 <p className="text-lg text-gray-800 dark:text-gray-500">At preline, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow.</p>
