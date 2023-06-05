@@ -21,7 +21,7 @@ const EventsOverview = async () => {
         {/* <!-- End Title --> */}
 
         {/* <!-- Grid --> */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
 
           {events.data.map((event) => {
 

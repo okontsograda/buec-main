@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main className="">
-      <div className="max-w-[100%] flex flex-col mx-auto h-screen bg-no-repeat bg-cover bg-[url('https://images.pexels.com/photos/69825/sunbeam-fog-autumn-nature-69825.jpeg')]">
+      <div className="max-w-[100%] -mt-[69px] flex flex-col mx-auto h-screen bg-no-repeat bg-cover bg-[url('https://images.pexels.com/photos/69825/sunbeam-fog-autumn-nature-69825.jpeg')]">
 
         {/* <!-- ========== MAIN CONTENT ========== --> */}
         <main id="content" role="main" className='m-auto'>
