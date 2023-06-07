@@ -39,7 +39,7 @@ export default function Home() {
       <EventsOverview />
 
       {/* Recent Sermons Section */}
-      {/* <SermonsOverview /> */}
+      <SermonsOverview />
 
     </main>
   )
