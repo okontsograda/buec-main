@@ -1,8 +1,8 @@
 "use client"
 import { useEffect } from 'react'
-import EventsOverview from './components/EventsOverview'
-import SermonsOverview from './components/SermonsOverview'
-import LiveBanner from './components/LiveBanner'
+// import EventsOverview from './components/EventsOverview'
+// import SermonsOverview from './components/SermonsOverview'
+// import LiveBanner from './components/LiveBanner'
 
 export default function Home() {
   
