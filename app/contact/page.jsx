@@ -15,64 +15,51 @@ const Contact = () => {
                         </p>
                     </div>
 
-                    <div className="mt-12">
-                        <form>
-                            <div className="grid gap-4 lg:gap-6">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-                                    <div>
-                                        <label for="hs-firstname-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">First Name</label>
-                                        <input type="text" name="hs-firstname-hire-us-2" id="hs-firstname-hire-us-2" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"/>
-                                    </div>
-
-                                    <div>
-                                        <label for="hs-lastname-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">Last Name</label>
-                                        <input type="text" name="hs-lastname-hire-us-2" id="hs-lastname-hire-us-2" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"/>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="hs-work-email-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">Work Email</label>
-                                    <input type="email" name="hs-work-email-hire-us-2" id="hs-work-email-hire-us-2" autocomplete="email" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"/>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-                                    <div>
-                                        <label for="hs-company-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">Company</label>
-                                        <input type="text" name="hs-company-hire-us-2" id="hs-company-hire-us-2" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"/>
-                                    </div>
-
-                                    <div>
-                                        <label for="hs-company-website-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">Company Website</label>
-                                        <input type="text" name="hs-company-website-hire-us-2" id="hs-company-website-hire-us-2" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"/>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="hs-about-hire-us-2" className="block text-sm text-gray-700 font-medium dark:text-white">Details</label>
-                                    <textarea id="hs-about-hire-us-2" name="hs-about-hire-us-2" rows="4" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"></textarea>
-                                </div>
+                    <form class="w-full max-w-lg mt-12">
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                    First Name
+                                </label>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text"/>
+                                    {/* <p class="text-gray-600 text-xs italic">Please fill out this field.</p> */}
                             </div>
-
-                            <div className="mt-3 flex">
-                                <div className="flex">
-                                    <input id="remember-me" name="remember-me" type="checkbox" className="shrink-0 mt-1.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
-                                </div>
-                                <div className="ml-3">
-                                    <label for="remember-me" className="text-sm text-gray-600 dark:text-gray-400">By submitting this form I have read and acknowledged the <a className="text-blue-600 decoration-2 hover:underline font-medium" href="#">Privact policy</a></label>
-                                </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                    Last Name
+                                </label>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text"/>
                             </div>
-
-                            <div className="mt-6 grid">
-                                <button type="submit" className="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800">Send inquiry</button>
+                        </div>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                    E-mail
+                                </label>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email"/>
+                                    <p class="text-gray-600 text-xs italic">Enter email for future notifications</p>
                             </div>
-
-                            <div className="mt-3 text-center">
-                                <p className="text-sm text-gray-500">
-                                    We'll get back to you in 1-2 business days.
-                                </p>
+                        </div>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                    Message
+                                </label>
+                                <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
+                                <p class="text-gray-600 text-xs italic">Re-size can be disabled by set by resize-none / resize-y / resize-x / resize</p>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="md:flex md:items-center">
+                            <div class="md:w-1/3">
+                                <button class="shadow bg-gray-500 hover:bg-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                                    Send
+                                </button>
+                            </div>
+                            <div class="md:w-2/3"></div>
+                        </div>
+                    </form>
+
+
                 </div>
             </div>
 
