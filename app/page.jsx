@@ -1,15 +1,8 @@
-"use client"
-import { useEffect } from 'react'
 import EventsOverview from './components/EventsOverview'
 import SermonsOverview from './components/SermonsOverview'
 import LiveBanner from './components/LiveBanner'
 
 export default function Home() {
-  
-  useEffect(() => {
-    // @ts-ignore
-    import('preline');
-  }, []);
 
   return (
     <main className="">
@@ -37,7 +30,7 @@ export default function Home() {
       </div>
 
       {/* Upcoming Events Section */}
-      {/* <EventsOverview /> */}
+      <EventsOverview />
 
       {/* Recent Sermons Section */}
       <SermonsOverview />

@@ -1,13 +1,22 @@
+"use client"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Link from "next/link";
 
-async function getEvents() {
-  const events = await fetch('https://www.admin.buec.life/api/event?populate=*');
-  return await events.json();
-}
+import { useState, useEffect } from 'react'
 
-const EventsOverview = async () => {
-  const events = await getEvents();
+
+
+const EventsOverview = () => {
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/event?populate=*')
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data)
+      })
+  }, [])
+
 
   return (
 
@@ -22,14 +31,14 @@ const EventsOverview = async () => {
       {/* <!-- Grid --> */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
 
-        {events.data.map((event) => {
-
+        {events.data?.map((event) => {
+          console.log(event)
           return (
             <div>
               {/* <!-- Card --> */}
               <Link className="group rounded-xl overflow-hidden" href={`/events/${event.id}`}>
                 <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                  <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`https://admin.buec.life/${event.attributes.image.data[0].attributes.url}`} alt="Kids VBS Camp" />
+                  <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`${event.attributes.image.data[0].attributes.name}`} alt="Kids VBS Camp" />
                   <span className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
                     New
                   </span>
@@ -55,6 +64,7 @@ const EventsOverview = async () => {
             </div>
           )
         })}
+
 
       </div>
       {/* <!-- End Grid --> */}

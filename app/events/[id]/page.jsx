@@ -6,15 +6,15 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 async function getEventDetails(eventId) {
 
-  const response = await fetch(`https://www.admin.buec.life/api/event/${eventId}`);
+  const response = await fetch(`http://127.0.0.1:1337/api/event/${eventId}`);
   const returnData =  await response.json();
 
   return returnData;
 }
 
 const EventPage = async ( {params} ) => {
-
   const eventReturn =  await getEventDetails(params.id);
+  
   const updatedDate = new Date(eventReturn.data.attributes.updatedAt).toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" });
   console.log(eventReturn.data.attributes.event_details)
 
@@ -22,7 +22,7 @@ const EventPage = async ( {params} ) => {
     <>
       <div className="bg-slate-900">
         <div className="bg-gradient-to-b from-violet-600/[.15] via-transparent">
-          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
+          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
             <Link className="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline text-gray-800 dark:text-white" href="/">
               <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
