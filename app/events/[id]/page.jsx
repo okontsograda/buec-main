@@ -31,7 +31,7 @@ const EventPage = async ( {params} ) => {
             </Link>
             <div className="max-w-3xl text-center mx-auto">
               <h1 className="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                Test
+                {eventReturn.data.attributes.name}
               </h1>
               <div className="flex space-x-12 lg:space-x-24 justify-center my-12 lg:my-24">
                 <div>
@@ -39,7 +39,7 @@ const EventPage = async ( {params} ) => {
                     <BsCalendar size={30} />
                   </div>
                   <div className="flex-shrink-0">
-                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">Nov 29, 2023</h3>
+                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.date}</h3>
                   </div>
                 </div>
                 <div>
@@ -47,7 +47,7 @@ const EventPage = async ( {params} ) => {
                     <BsClock size={30} />
                   </div>
                   <div className="flex-shrink-0">
-                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">5:00 pm</h3>
+                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.event_time}</h3>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const EventPage = async ( {params} ) => {
                   {/* <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-500">Last updated: {updatedDate}</p> */}
                 </div>
 
-                <ReactMarkdown className="markdown">Here's the details</ReactMarkdown>
+                <ReactMarkdown className="markdown">{eventReturn.data.attributes.event_details}</ReactMarkdown>
 
 
               </div>
