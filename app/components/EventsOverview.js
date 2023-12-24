@@ -10,7 +10,7 @@ const EventsOverview = () => {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/event?populate=*')
+    fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events?populate=*')
       .then((res) => res.json())
       .then((data) => {
         setEvents(data)
@@ -21,24 +21,19 @@ const EventsOverview = () => {
   return (
 
     <div className="px-4 py-10 sm:px-6 lg:px-24 lg:py-36 mx-auto">
-      {/* <!-- Title --> */}
       <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-gray-600">Upcoming Events</h2>
         <p className="mt-1 text-gray-600 dark:text-gray-400">Stay up to date with our upcoming events.</p>
       </div>
-      {/* <!-- End Title --> */}
 
-      {/* <!-- Grid --> */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
 
         {events.data?.map((event) => {
-          console.log(event)
           return (
             <div>
-              {/* <!-- Card --> */}
               <Link className="group rounded-xl overflow-hidden" href={`/events/${event.id}`}>
                 <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                  <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`${event.attributes.image.data[0].attributes.name}`} alt="Kids VBS Camp" />
+                  {event.attributes.image.data ? <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`${event.attributes.image.data.attributes.url}`} />: <div>No Image</div>}
                   <span className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
                     New
                   </span>
@@ -59,15 +54,11 @@ const EventsOverview = () => {
                   </div>
                 </div>
               </Link>
-              {/* <!-- End Card --> */}
 
             </div>
           )
         })}
-
-
       </div>
-      {/* <!-- End Grid --> */}
     </div>
 
   )
