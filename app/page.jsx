@@ -3,9 +3,10 @@ import { useEffect } from 'react'
 import EventsOverview from './components/EventsOverview'
 import SermonsOverview from './components/SermonsOverview'
 import LiveBanner from './components/LiveBanner'
+import Calendar from './components/Calendar'
 
 export default function Home() {
-  
+
   useEffect(() => {
     // @ts-ignore
     import('preline');
@@ -35,7 +36,7 @@ export default function Home() {
         <div className='mt-auto'></div>
 
       </div>
-
+      
       {/* Upcoming Events Section */}
       {/* <EventsOverview /> */}
 
