@@ -7,15 +7,25 @@ import { useState, useEffect } from 'react'
 
 
 const EventsOverview = () => {
-  const [events, setEvents] = useState([])
-
-  useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events?populate=*')
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data)
-      })
-  }, [])
+  // Assuming events are fetched from somewhere or hard-coded
+  const events = [
+    {
+      id: 1,
+      name: 'First Event',
+      title: 'Community Outreach Event',
+      date: 'February 20, 2024',
+      location: 'Church Auditorium',
+      img: 'https://newevent.rs/wp-content/uploads/2021/06/new-event-fb-1.jpg'
+    },
+    {
+      id: 2,
+      name: 'New Event',
+      title: 'Bible Study Group',
+      date: 'February 25, 2024',
+      location: 'Fellowship Hall',
+      img: 'https://newevent.rs/wp-content/uploads/2021/06/new-event-fb-1.jpg'
+    },
+  ];
 
 
   return (
@@ -28,12 +38,13 @@ const EventsOverview = () => {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
 
-        {events.data?.map((event) => {
+        {events?.map((event) => {
+          console.log(events)
           return (
-            <div>
+            <div key={event.id}>
               <Link className="group rounded-xl overflow-hidden" href={`/events/${event.id}`}>
                 <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                  {event.attributes.image.data ? <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`${event.attributes.image.data.attributes.url}`} />: <div>No Image</div>}
+                  {event.img ? <img className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src={`${event.img}`} /> : <div>No Image</div>}
                   <span className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
                     New
                   </span>
@@ -41,10 +52,10 @@ const EventsOverview = () => {
 
                 <div className="mt-7">
                   <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-600">
-                    {event.attributes.name}
+                    {event.name}
                   </h3>
                   <div className="mt-3 text-gray-800 dark:text-gray-600">
-                    <ReactMarkdown>{event.attributes.short_description}</ReactMarkdown>
+                    <ReactMarkdown>{event.short_description}</ReactMarkdown>
                   </div>
                   <div className="mt-5 inline-flex items-center gap-x-1.5 text-gray dark:text-gray-600 decoration-2 group-hover:underline font-medium">
                     Find out more

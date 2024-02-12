@@ -1,19 +1,15 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import { BsCalendar, BsClock } from 'react-icons/bs'
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useRouter } from 'next/navigation';
 
 
-async function getEventDetails(eventId) {
+const EventPage = ( {params} ) => {
+  const router = useRouter();
 
-  const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events/' + `${eventId}`);
-  const returnData =  await response.json();
-
-  return returnData;
-}
-
-const EventPage = async ( {params} ) => {
-  const eventReturn =  await getEventDetails(params.id);
+  console.log(params)
   
   // const updatedDate = new Date(eventReturn.data.attributes.updatedAt).toLocaleDateString('en-us', { year: "numeric", month: "short", day: "2-digit" });
   // console.log(eventReturn.data.attributes.event_details)
@@ -31,7 +27,7 @@ const EventPage = async ( {params} ) => {
             </Link>
             <div className="max-w-3xl text-center mx-auto">
               <h1 className="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                {eventReturn.data.attributes.name}
+                {/* {eventReturn.data.attributes.name} */}
               </h1>
               <div className="flex space-x-12 lg:space-x-24 justify-center my-12 lg:my-24">
                 <div>
@@ -39,7 +35,7 @@ const EventPage = async ( {params} ) => {
                     <BsCalendar size={30} />
                   </div>
                   <div className="flex-shrink-0">
-                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.date}</h3>
+                    {/* <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.date}</h3> */}
                   </div>
                 </div>
                 <div>
@@ -47,7 +43,7 @@ const EventPage = async ( {params} ) => {
                     <BsClock size={30} />
                   </div>
                   <div className="flex-shrink-0">
-                    <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.event_time}</h3>
+                    {/* <h3 className="block text-lg font-semibold text-gray-800 dark:text-white mt-4">{eventReturn.data.attributes.event_time}</h3> */}
                   </div>
                 </div>
               </div>
@@ -70,7 +66,7 @@ const EventPage = async ( {params} ) => {
                   {/* <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-500">Last updated: {updatedDate}</p> */}
                 </div>
 
-                <ReactMarkdown className="markdown">{eventReturn.data.attributes.event_details}</ReactMarkdown>
+                {/* <ReactMarkdown className="markdown">{eventReturn.data.attributes.event_details}</ReactMarkdown> */}
 
 
               </div>

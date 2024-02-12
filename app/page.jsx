@@ -1,4 +1,4 @@
-import EventsOverview from './components/EventsOverview'
+import EventsOverview from './components/UpcomingEvents'
 import SermonsOverview from './components/SermonsOverview'
 import LiveBanner from './components/LiveBanner'
 
