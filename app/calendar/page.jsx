@@ -18,7 +18,6 @@ const EventCalendar = () => {
             .then((res) => res.json())
             .then((data) => {
                 setEvents(data.events);
-                console.log(data.events);
             });
     }, []);
 
@@ -26,7 +25,7 @@ const EventCalendar = () => {
         const formattedStart = moment(start).format('YYYY-MM-DDTHH:mm');
         const formattedEnd = moment(end).format('YYYY-MM-DDTHH:mm');
 
-        setModalData({ start: formattedStart, end: formattedEnd });
+        setModalData({ start: formattedStart, end: formattedEnd, type: '', notes:'' });
         setModalTitle('Add New Event');
         setShowModal(true);
     };
@@ -47,13 +46,14 @@ const EventCalendar = () => {
         const formattedData = {
             ...data,
             start: moment(data.start).format('YYYY-MM-DDTHH:mm'),
-            end: moment(data.end).format('YYYY-MM-DDTHH:mm')
+            end: moment(data.end).format('YYYY-MM-DDTHH:mm'),
         };
-        console.table(data)
+
         if (data._id) {
             // Edit existing event
-            // setEvents(events.map((event) => (event.id === data.id ? data : event)));
+            setEvents(events.map((event) => (event._id === data._id ? data : event)));
             console.log("Editing event info...")
+            console.table(data)
             // Execute PUT API endpoint
             fetch(`/api/calendarEvents`, {
                 method: 'PUT',
@@ -98,10 +98,10 @@ const EventCalendar = () => {
                 .catch((error) => {
                     console.error('Error updating event data:', error);
                 });
-
         }
         handleModalClose();
     };
+
 
     const handleModalDataChange = (field, value) => {
         setModalData({ ...modalData, [field]: value });

@@ -1,5 +1,5 @@
 // pages/api/events.js
-import { connectToDatabase } from '../../util/db';
+import { connectToDatabase, ObjectID } from '../../util/db';
 import { NextResponse } from 'next/server';
 
 // Handles GET requests to /api
@@ -15,6 +15,8 @@ export async function GET(request) {
       event.start = formatDate(event.start);
       event.end = formatDate(event.end);
     });
+
+    console.log(events)
 
     return NextResponse.json({ events });
   } catch (error) {
@@ -61,7 +63,7 @@ export async function PUT(request) {
     const eventData = await request.json();
 
     if (eventData) {
-      const filter = { _id: ObjectId(eventData._id) };
+      const filter = { _id: ObjectID(eventData._id) };
 
       const updateDocument = {
         $set: {

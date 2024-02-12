@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 const uri = 'mongodb+srv://buec-admin:Liv3123@buec-calendar.q2glhxq.mongodb.net/?retryWrites=true&w=majority';
 
@@ -13,4 +13,8 @@ export async function connectToDatabase() {
 
   cachedClient = client;
   return client;
+}
+
+export function ObjectID() {
+  return Object
 }

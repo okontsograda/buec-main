@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 
 const Modal = ({ showModal, modalData, modalTitle, handleModalClose, handleModalSubmit, handleModalDataChange }) => {
-    console.log(modalData)
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape' && showModal) {
+                handleModalClose();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [showModal, handleModalClose]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const modalContent = document.querySelector('.modal-content');
+            if (modalContent && !modalContent.contains(event.target)) {
+                handleModalClose();
+            }
+        };
+
+        if (showModal) {
+            document.addEventListener('click', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [showModal, handleModalClose]);
+
     return (
         showModal && (
             <div className="modal-container">
@@ -43,6 +75,15 @@ const Modal = ({ showModal, modalData, modalTitle, handleModalClose, handleModal
                                 <option value="conference">Conference</option>
                             </select>
                         </div>
+                        <div>
+                            <label>Notes:</label>
+                            <textarea
+                                value={modalData.notes || ''}
+                                onChange={(e) => handleModalDataChange('notes', e.target.value)}
+                                style={{ width: '100%', padding: '8px', marginTop: '5px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
+                            ></textarea>
+                        </div>
+
                         <button type="submit">Submit</button>
                     </form>
                 </div>
