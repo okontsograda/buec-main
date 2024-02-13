@@ -8,7 +8,8 @@ const KidsCampRegistration = () => {
             {
                 childsFirstName: '',
                 childsLastName: '',
-                age: ''
+                age: '',
+                childsAllergies: ''
             }
         ],
         fatherFirstName: '',
@@ -84,7 +85,26 @@ const KidsCampRegistration = () => {
 
         console.log(formData);
 
-        // Reset form after submission
+        // Send a fetch request to update the event data in the database
+        fetch('/api/submitForm', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to update event data');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log('Event data updated successfully:', data);
+            })
+            .catch((error) => {
+                console.error('Error updating event data:', error);
+            });
 
     };
 
