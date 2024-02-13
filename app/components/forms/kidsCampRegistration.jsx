@@ -1,6 +1,8 @@
+"use client"
 import { useState } from 'react';
 
 const KidsCampRegistration = () => {
+
     const [formData, setFormData] = useState({
         children: [
             {
@@ -9,10 +11,22 @@ const KidsCampRegistration = () => {
                 age: ''
             }
         ],
-        parentName: '',
+        fatherFirstName: '',
+        motherFirstName: '',
+        lastName: '',
+        address: '',
+        city: '',
+        zipcode: '',
+        state: '',
         email: '',
         phone: '',
-        pickupFullName: ''
+        pickupFullName: '',
+        emergencyFullName: '',
+        emergencyRelation: '',
+        emergencyPhone: '',
+        pickupFullName: '',
+        pickupRelation: '',
+        pickupPhone: ''
     });
 
     const handleChange = (e, index) => {
@@ -135,55 +149,47 @@ const KidsCampRegistration = () => {
                                     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
 
                                         <div className="md:col-span-2">
-                                            <label htmlFor="full_name">Father's First Name</label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="fatherFirstName">Father's First Name</label>
+                                            <input type="text" name="fatherFirstName" id="fatherFirstName" value={formData.fatherFirstName} onChange={(e) => setFormData({ ...formData, fatherFirstName: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-2">
-                                            <label htmlFor="full_name">Mother's First Name</label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="motherFirstName">Mother's First Name</label>
+                                            <input type="text" name="motherFirstName" id="motherFirstName" value={formData.motherFirstName} onChange={(e) => setFormData({ ...formData, motherFirstName: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-3">
-                                            <label htmlFor="full_name">Last Name</label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="lastName">Last Name</label>
+                                            <input type="text" name="lastName" id="lastName" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-5">
-                                            <label htmlFor="email">Email Address</label>
-                                            <input type="text" name="email" id="email" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="email@domain.com" />
+                                            <label htmlFor="email">Contact E-mail Address</label>
+                                            <input type="text" name="email" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="email@domain.com" />
                                         </div>
 
                                         <div className="md:col-span-3">
-                                            <label htmlFor="address">Address / Street</label>
-                                            <input type="text" name="address" id="address" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
+                                            <label htmlFor="address">Address</label>
+                                            <input type="text" name="address" id="address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                         </div>
 
                                         <div className="md:col-span-2">
                                             <label htmlFor="city">City</label>
-                                            <input type="text" name="city" id="city" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
+                                            <input type="text" name="city" id="city" value={formData.city} onChange={(e) => setFormData({ ...formData, city: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                         </div>
 
                                         <div className="md:col-span-2">
-                                            <label htmlFor="state">State / province</label>
-                                            <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                                <input name="state" id="state" placeholder="State" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" />
-                                                <button tabIndex="-1" className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                                                    <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                                    </svg>
-                                                </button>
-                                                <button tabIndex="-1" htmlFor="show_more" className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                                                    <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                                                </button>
-                                            </div>
+                                            <label htmlFor="zipcode">Zipcode</label>
+                                            <input type="text" name="zipcode" id="zipcode" value={formData.zipcode} onChange={(e) => setFormData({ ...formData, zipcode: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                         </div>
 
-                                        <div className="md:col-span-1">
-                                            <label htmlFor="zipcode">Zipcode</label>
-                                            <input type="text" name="zipcode" id="zipcode" className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
+                                        <div className="md:col-span-3">
+                                            <label htmlFor="state">State</label>
+                                            <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                                                <input name="state" id="state" value={formData.state} onChange={(e) => setFormData({ ...formData, state: e.target.value })} placeholder="State" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" />
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -199,18 +205,18 @@ const KidsCampRegistration = () => {
                                 <div className="lg:col-span-2">
                                     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div className="md:col-span-5">
-                                            <label htmlFor="full_name">Full Name</label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="emergencyFullName">Full Name</label>
+                                            <input type="text" name="emergencyFullName" id="emergencyFullName" value={formData.emergencyFullName} onChange={(e) => setFormData({ ...formData, emergencyFullName: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-3">
-                                            <label htmlFor="full_name">Relationship to child<span className='text-gray-500'>(ren)</span></label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="emergencyRelation">Relationship to child<span className='text-gray-500'>(ren)</span></label>
+                                            <input type="text" name="emergencyRelation" id="emergencyRelation" value={formData.emergencyRelation} onChange={(e) => setFormData({ ...formData, emergencyRelation: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-2">
-                                            <label htmlFor="zipcode">Phone Number</label>
-                                            <input type="text" name="zipcode" id="zipcode" className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
+                                            <label htmlFor="emergencyPhone">Phone Number</label>
+                                            <input type="text" name="emergencyPhone" id="emergencyPhone" value={formData.emergencyPhone} onChange={(e) => setFormData({ ...formData, emergencyPhone: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
                                         </div>
                                     </div>
                                 </div>
@@ -228,17 +234,17 @@ const KidsCampRegistration = () => {
                                     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div className="md:col-span-5">
                                             <label htmlFor="pickupFullName">Full Name</label>
-                                            <input type="text" id="pickupFullName" name="pickupFullName" value={formData.pickupFullName} onChange={handleChange} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <input type="text" id="pickupFullName" value={formData.pickupFullName} onChange={(e) => setFormData({ ...formData, pickupFullName: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-3">
-                                            <label htmlFor="full_name">Relationship to child<span className='text-gray-500'>(ren)</span></label>
-                                            <input type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                            <label htmlFor="pickupRelation">Relationship to child<span className='text-gray-500'>(ren)</span></label>
+                                            <input type="text" id="pickupRelation" value={formData.pickupRelation} onChange={(e) => setFormData({ ...formData, pickupRelation: e.target.value })} className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div className="md:col-span-2">
-                                            <label htmlFor="zipcode">Phone Number</label>
-                                            <input type="text" name="zipcode" id="zipcode" className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
+                                            <label htmlFor="pickupPhone">Phone Number</label>
+                                            <input type="text" id="pickupPhone" value={formData.pickupPhone} onChange={(e) => setFormData({ ...formData, pickupPhone: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
                                         </div>
                                     </div>
                                     <div className="md:col-span-5 text-right mt-8">
