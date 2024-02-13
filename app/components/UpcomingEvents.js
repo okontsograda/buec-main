@@ -7,33 +7,15 @@ import { useState, useEffect } from 'react'
 
 
 const EventsOverview = () => {
-  // Assuming events are fetched from somewhere or hard-coded
-  const events = [
-    {
-      id: 1,
-      name: 'First Event',
-      title: 'Community Outreach Event',
-      date: 'February 20, 2024',
-      location: 'Church Auditorium',
-      img: 'https://newevent.rs/wp-content/uploads/2021/06/new-event-fb-1.jpg'
-    },
-    {
-      id: 2,
-      name: 'New Event',
-      title: 'Bible Study Group',
-      date: 'February 25, 2024',
-      location: 'Fellowship Hall',
-      img: 'https://newevent.rs/wp-content/uploads/2021/06/new-event-fb-1.jpg'
-    },
-    {
-      id: 2,
-      name: 'New Event',
-      title: 'Bible Study Group',
-      date: 'February 25, 2024',
-      location: 'Fellowship Hall',
-      img: 'https://newevent.rs/wp-content/uploads/2021/06/new-event-fb-1.jpg'
-    },
-  ];
+  const [events, setEvents] = useState([])
+
+  // useEffect(() => {
+  //   fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events?populate=*')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setEvents(data)
+  //     })
+  // }, [])
 
 
   return (
@@ -44,9 +26,9 @@ const EventsOverview = () => {
         <p className="mt-1 text-gray-600 dark:text-gray-400">Stay up to date with our upcoming events.</p>
       </div>
 
-      <div className="flex justify-evenly gap-16">
-        {events?.map((event) => {
-          console.log(events)
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
+
+        {/* {events.data?.map((event) => {
           return (
             <div key={event.id}>
               <Link className="group rounded-xl overflow-hidden" href={`/events/${event.id}`}>
@@ -72,7 +54,7 @@ const EventsOverview = () => {
 
             </div>
           )
-        })}
+        })} */}
       </div>
     </div>
 
