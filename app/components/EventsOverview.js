@@ -9,13 +9,13 @@ import { useState, useEffect } from 'react'
 const EventsOverview = () => {
   const [events, setEvents] = useState([])
 
-  useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events?populate=*')
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data)
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch(process.env.NEXT_PUBLIC_STRAPI_API + '/events?populate=*')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setEvents(data)
+  //     })
+  // }, [])
 
 
   return (
@@ -28,7 +28,7 @@ const EventsOverview = () => {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
 
-        {events.data?.map((event) => {
+        {/* {events.data?.map((event) => {
           return (
             <div>
               <Link className="group rounded-xl overflow-hidden" href={`/events/${event.id}`}>
@@ -57,7 +57,7 @@ const EventsOverview = () => {
 
             </div>
           )
-        })}
+        })} */}
       </div>
     </div>
 
