@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const ResultsTable = ({ data }) => {
     const [searchQuery, setSearchQuery] = useState('');
-    console.log(data.events)
+
     if (!data.events || data.events.length === 0) {
         return <div>No data available</div>;
     }
@@ -24,7 +24,8 @@ const ResultsTable = ({ data }) => {
         ? contactsByLastNameLetter
         : Object.keys(contactsByLastNameLetter).reduce((acc, letter) => {
             acc[letter] = contactsByLastNameLetter[letter].filter(contact =>
-                contact.pickupFullName.toLowerCase().includes(searchQuery.toLowerCase())
+                contact.pickupFullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                contact.children[0].childsLastName.toLowerCase().includes(searchQuery.toLowerCase())
             );
             return acc;
         }, {});
@@ -35,7 +36,7 @@ const ResultsTable = ({ data }) => {
     };
 
     return (
-        <div className="container p-2 mx-auto sm:p-4 text-gray-700">
+        <div className="container p-2 mx-auto text-gray-700">
             <h2 className="mb-4 text-2xl font-semibold">Contacts</h2>
             <div className="overflow-x-auto">
                 <input
@@ -45,66 +46,75 @@ const ResultsTable = ({ data }) => {
                     onChange={handleSearchInputChange}
                     className="w-full p-2 mb-4 text-sm rounded-md focus:outline-none focus:ring focus:border-blue-300"
                 />
-                {Object.keys(filteredContacts).map((letter) => (
-                    // Only render sections with data
-                    filteredContacts[letter].length > 0 && (
-                        <div key={letter}>
-                            <table className="w-full p-6 text-xs text-left whitespace-nowrap">
-                                <colgroup>
-                                    <col className="w-5" />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col className="w-5" />
-                                </colgroup>
-                                <thead>
-                                    <tr className="">
-                                        <th className="p-3">A-Z</th>
-                                        <th className="p-3">Child's Name</th>
-                                        <th className="p-3">Parent's Name</th>
-                                        <th className="p-3">Phone</th>
-                                        <th className="p-3">Email</th>
-                                        <th className="p-3">Address</th>
-                                        <th className="p-3">
-                                            <span className="sr-only">Edit</span>
-                                        </th>
+                <table className="w-full p-6 text-xs text-left whitespace-nowrap">
+                    <colgroup>
+                        <col className="w-5" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col className="w-5" />
+                    </colgroup>
+                    <thead>
+                        <tr className="bg-gray-100">
+                            <th className="p-3">A-Z</th>
+                            <th className="p-3">Last Name</th>
+                            <th className="p-3">Children</th>
+                            <th className="p-3">Parent's Name</th>
+                            <th className="p-3">Contact</th>
+                            <th className="p-3">Details</th>
+                            <th className="p-3">Address</th>
+
+                        </tr>
+                    </thead>
+                    <tbody className="border-b border-gray-700">
+                        {Object.keys(filteredContacts).map((letter) => (
+                            filteredContacts[letter].length > 0 && (
+                                <React.Fragment key={letter}>
+                                    <tr className=''>
+                                        <td className="px-3 text-xl font-medium text-gray-500">{letter}</td>
+                                        <td colSpan="7"></td>
                                     </tr>
-                                </thead>
-                                <tbody className="border-b border-gray-700">
                                     {filteredContacts[letter].map((contact, index) => (
-                                        <tr key={index}>
-                                            <td className="px-3 text-2xl font-medium">{letter}</td>
-                                            <td className="px-3 py-2 min-w-[175px]">
-                                                <p>{contact.children[0].childsFirstName}</p>
+                                        <tr key={index} className=''>
+                                            {/* {console.log(contact)} */}
+                                            <td />
+                                            <td className="px-3 py-2 border-b-2">
+                                                <p>{contact.children[0].childsLastName}</p>
                                             </td>
-                                            <td className="px-3 py-2">
-                                                <span>{contact.pickupRelation}</span>
+                                            <td className="px-3 py-2 border-b-2">
+                                                {contact.children.map((child, index) => (
+                                                    <p key={index} className='pb-1'>{child.childsFirstName}</p>
+                                                ))}
                                             </td>
-                                            <td className="px-3 py-2">
-                                                <p>{contact.pickupPhone}</p>
+                                            <td className="px-3 py-2 border-b-2">
+                                                <p>{contact.fatherFirstName}</p>
+                                                <span>{contact.motherFirstName}</span>
                                             </td>
-                                            <td className="px-3 py-2">
-                                                <p>{contact.email}</p>
+                                            <td className="px-3 py-2 border-b-2">
+                                                <p>Email: {contact.email}</p>
+                                                <p>Phone #: {contact.pickupPhone}</p>
                                             </td>
-                                            <td className="px-3 py-2">
-                                                <p>{contact.address}, {contact.city}, {contact.state}, {contact.zipcode}</p>
+                                            <td className="px-3 py-2 border-b-2">
+                                                <p className='underline'>Pickup Contact:</p>
+                                                <p className='text-gray-500 pl-2'> {contact.pickupFullName}</p>
+                                                <p className='text-gray-500 pl-2 mb-2'>{contact.pickupPhone}</p>
+                                                <p className='underline text-red-700'>Emergency Contact:</p>
+                                                <p className='text-gray-500 pl-2'> {contact.pickupFullName}</p>
+                                                <p className='text-gray-500 pl-2 mb-2'>{contact.pickupPhone}</p>
                                             </td>
-                                            <td className="px-3 py-2">
-                                                <button type="button" title="Open details" className="p-1 rounded-full">
-                                                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
-                                                        <path d="M12 6a2 2 0 110-4 2 2 0 010 4zm0 8a2 2 0 110-4 2 2 0 010 4zm-2 6a2 2 0 104 0 2 2 0 00-4 0z"></path>
-                                                    </svg>
-                                                </button>
+                                            <td className="px-3 py-2 border-b-2">
+                                                <p>{contact.address} <br /> {contact.city} {contact.state}, {contact.zipcode}</p>
                                             </td>
                                         </tr>
                                     ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                ))}
+                                </React.Fragment>
+                            )
+                        ))}
+                    </tbody>
+                </table>
+
             </div>
         </div>
     );
