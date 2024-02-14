@@ -24,8 +24,15 @@ const ResultsTable = ({ data }) => {
         ? contactsByLastNameLetter
         : Object.keys(contactsByLastNameLetter).reduce((acc, letter) => {
             acc[letter] = contactsByLastNameLetter[letter].filter(contact =>
-                contact.pickupFullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                contact.children[0].childsLastName.toLowerCase().includes(searchQuery.toLowerCase())
+                contact.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                contact.fatherFirstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                contact.motherFirstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                contact.children.some(child =>
+                    `${child.childsFirstName} ${child.childsLastName}`.toLowerCase().includes(searchQuery.toLowerCase())
+                ) ||
+                contact.children.some(child =>
+                    child.childsLastName.toLowerCase().includes(searchQuery.toLowerCase())
+                )
             );
             return acc;
         }, {});
@@ -36,16 +43,19 @@ const ResultsTable = ({ data }) => {
     };
 
     return (
-        <div className="container p-2 mx-auto text-gray-700">
-            <h2 className="mb-4 text-2xl font-semibold">Contacts</h2>
+        <div className="py-12 px-0 mx-0 w-full text-gray-700">
+            <h2 className="mb-4 text-2xl font-semibold">Kids Camp - Registrants Information</h2>
             <div className="overflow-x-auto">
-                <input
-                    type="text"
-                    placeholder="Search by name..."
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                    className="w-full p-2 mb-4 text-sm rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                />
+                <div className='pl-2 mr-2'>
+                    <input
+                        type="text"
+                        placeholder="Search by child's name, parents name, or last name"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        className="h-10 border mt-1 rounded px-4 w-full md:w-[50%] mb-4 bg-gray-50 text-xs"
+                    />
+                </div>
+
                 <table className="w-full p-6 text-xs text-left whitespace-nowrap">
                     <colgroup>
                         <col className="w-5" />
@@ -78,7 +88,7 @@ const ResultsTable = ({ data }) => {
                                     </tr>
                                     {filteredContacts[letter].map((contact, index) => (
                                         <tr key={index} className=''>
-                                            {/* {console.log(contact)} */}
+                                            {console.log(contact)}
                                             <td />
                                             <td className="px-3 py-2 border-b-2">
                                                 <p>{contact.children[0].childsLastName}</p>
