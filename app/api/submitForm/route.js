@@ -10,9 +10,7 @@ export async function GET(request) {
     const eventCollection = db.collection('forms');
     const events = await eventCollection.find().toArray();
 
-    console.log(request)
-
-    return NextResponse.json({ message: 'Here is your form data', events });
+    return NextResponse.json({ events });
   } catch (error) {
     return NextResponse.json({ message: 'Error fetching events', error });
   }
