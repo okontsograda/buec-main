@@ -44,7 +44,7 @@ const ResultsTable = ({ data }) => {
 
     return (
         <div className="py-12 px-0 mx-0 w-full text-gray-700">
-            <h2 className="mb-4 text-2xl font-semibold">Kids Camp - Registrants Information</h2>
+            <h2 className="mb-4 text-2xl pl-2 font-semibold">Kids Camp - Registrants Information</h2>
             <div className="overflow-x-auto">
                 <div className='pl-2 mr-2'>
                     <input
