@@ -129,7 +129,7 @@ const KidsCampRegistration = () => {
                     <p className="text-gray-500 text-lg">Theme: Let My People Go</p>
                     <p className="text-gray-500 text-lg">When: June 12-15<span className='text-sm'>th</span></p>
                     <p className="text-gray-500 text-lg">Time: 5:00<span className='text-sm'>pm</span> - 8:30<span className='text-sm'>pm</span></p>
-                    <p className="text-gray-500 text-lg">Cost: $35 per child</p>
+                    <p className="text-gray-500 text-lg">Cost: $35 <span className='text-sm'>per child</span></p>
                     <p className="text-gray-500 text-lg mb-8">Ages: 6-11</p>
 
                     {!submitted && (
