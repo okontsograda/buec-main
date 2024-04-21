@@ -126,11 +126,8 @@ const KidsCampRegistration = () => {
             <div className="container max-w-screen-lg mx-auto">
                 <div>
                     <h2 className="font-semibold text-xl text-gray-600 mb-6">Kids Camp Registration</h2>
-                    <p className="text-gray-500 text-lg">Theme: Let My People Go</p>
-                    <p className="text-gray-500 text-lg">When: June 12-15<span className='text-sm'>th</span></p>
-                    <p className="text-gray-500 text-lg">Time: 5:00<span className='text-sm'>pm</span> - 8:30<span className='text-sm'>pm</span></p>
-                    <p className="text-gray-500 text-lg">Cost: $35 <span className='text-sm'>per child</span></p>
-                    <p className="text-gray-500 text-lg mb-8">Ages: 6-11</p>
+                    
+                    <img src="/kidsCamp_24.png" alt="Camp Banner" className="w-full" />
 
                     {!submitted && (
                         <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
