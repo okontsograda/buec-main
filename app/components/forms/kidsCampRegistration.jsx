@@ -20,7 +20,7 @@ const KidsCampRegistration = () => {
         zipcode: '',
         state: '',
         email: '',
-        phone: '',
+        parentsPhone: '',
         pickupFullName: '',
         emergencyFullName: '',
         emergencyRelation: '',
@@ -199,8 +199,8 @@ const KidsCampRegistration = () => {
                                             </div>
 
                                             <div className="md:col-span-2">
-                                                <label htmlFor="pickupPhone">Phone Number</label>
-                                                <input required type="text" id="pickupPhone" value={formData.pickupPhone} onChange={(e) => setFormData({ ...formData, pickupPhone: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
+                                                <label htmlFor="parentsPhone">Phone Number</label>
+                                                <input required type="text" id="parentsPhone" value={formData.parentsPhone} onChange={(e) => setFormData({ ...formData, parentsPhone: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
                                             </div>
 
                                             <div className="md:col-span-5">
