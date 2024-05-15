@@ -16,6 +16,12 @@ const ResultsTable = ({ data }) => {
 
     // Add the contact data to the corresponding group
     data.events.forEach((contact) => {
+        // Check if the property corresponding to the first letter exists
+        if (!contactsByLastNameLetter[contact.lastName[0]]) {
+            // If it doesn't exist, initialize it as an empty array
+            contactsByLastNameLetter[contact.lastName[0]] = [];
+        }
+        // Push the contact to the array corresponding to its first letter
         contactsByLastNameLetter[contact.lastName[0]].push(contact);
     });
 
