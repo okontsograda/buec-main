@@ -180,7 +180,7 @@ const YouthCamp = () => {
                         <div className="md:col-span-4 pt-2">
                           <label className="cursor-pointer label">
                             <input type="checkbox" className="mr-2 text-gray-500" />
-                            <span className="text-gray-600"><span className='text-gray-500'>If you are under 18:</span> I verify that I have approved parental consent for this trip.</span>
+                            <span className="text-gray-600"><span className='text-gray-500090'>If you are under 18:</span> I verify that I have approved parental consent for this trip.</span>
                           </label>
                         </div>
 
