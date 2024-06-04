@@ -177,7 +177,7 @@ const YouthCamp = () => {
                           <input required type="text" id={`age${index}`} name="age" value={child.age} maxLength={10} onChange={(e) => handleChange(e, index)} onKeyPress={handleAgeFormat} placeholder='12/12/2000' className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                         </div>
 
-                        <div className="md:col-span-4 pt-2">
+                        <div className="md:col-span-5 pt-2">
                           <label className="cursor-pointer label">
                             <input type="checkbox" className="mr-2 text-gray-500" />
                             <span className="text-gray-600"><span className='text-gray-500090'>If you are under 18:</span> I verify that I have approved parental consent for this trip.</span>
@@ -280,6 +280,12 @@ const YouthCamp = () => {
                       <div className="md:col-span-2">
                         <label htmlFor="emergencyPhone">Phone Number</label>
                         <input required type="text" name="emergencyPhone" id="emergencyPhone" value={formData.emergencyPhone} onChange={(e) => setFormData({ ...formData, emergencyPhone: e.target.value })} className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="(555)-555-5555" />
+                      </div>
+
+                      <div className="md:col-span-5 text-right mt-8">
+                        <div className="inline-flex items-end">
+                          <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Submit</button>
+                        </div>
                       </div>
                     </div>
                   </div>
