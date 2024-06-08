@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Bethesda Evengelical Church',
-  description: 'Bethesda Evengelical Church',
+  title: 'Bethesda UGC',
+  description: 'Bethesda Ukrainian Church',
   keywords: 'church, ukrainian, evengelical, bethesda'
 }
 
