@@ -94,7 +94,6 @@ const ResultsTable = ({ data }) => {
                                     </tr>
                                     {filteredContacts[letter].map((contact, index) => (
                                         <tr key={index} className=''>
-                                            {console.log(contact)}
                                             <td />
                                             <td className="px-3 py-2 border-b-2">
                                                 <p>{contact.children[0].childsLastName}</p>

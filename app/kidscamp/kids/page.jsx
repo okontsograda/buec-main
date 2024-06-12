@@ -46,11 +46,11 @@ const KidsCamp = () => {
                 // Calculate age for each child
                 const childrenWithAge = allChildren.map((child) => ({
                     ...child,
-                    age: differenceInYears(new Date(), new Date(child.age)),
+                    ageInt: differenceInYears(new Date(), new Date(child.age)),
                 }));
 
                 // Sort children based on age in ascending order
-                childrenWithAge.sort((a, b) => a.age - b.age);
+                childrenWithAge.sort((a, b) => a.ageInt - b.ageInt);
 
                 setChildrenData(childrenWithAge);
             } catch (error) {
@@ -66,40 +66,46 @@ const KidsCamp = () => {
         <>
             <div className="flex flex-wrap justify-center mb-4">
                 {Object.keys(ageGroupsCount).map((age, idx) => (
-                    <div className="bg-white rounded-lg text-center p-4 mb-4 md:w-1/7">
-                    <p className="text-2xl font-semibold">{age}</p>
-                    <p className="text-xs text-gray-600">{ageGroupsCount[age]}</p>
-                </div>
-            ))}
+                    <div key={idx} className="bg-white rounded-lg text-center p-4 mb-4 w-1/5 sm:w-1/4 md:w-1/5 lg:w-1/6">
+                        <p className="text-lg font-semibold">{age}</p>
+                        <p className="text-xs text-gray-600">{ageGroupsCount[age]}</p>
+                    </div>
+                ))}
             </div>
-            <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
-                <thead>
-                    <tr className="bg-gray-100 text-left">
-                        <th className="px-4 py-2 border">#</th>
-                        <th className="px-4 py-2 border">First Name</th>
-                        <th className="px-4 py-2 border">Last Name</th>
-                        <th className="px-4 py-2 border">Age</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {childrenData ? (
-                        childrenData.map((child, idx) => (
-                            <tr key={idx} className="border-t">
-                                <td className="px-4 py-2 border">{idx + 1}</td>
-                                <td className="px-4 py-2 border">{child.childsFirstName}</td>
-                                <td className="px-4 py-2 border">{child.childsLastName}</td>
-                                <td className="px-4 py-2 border">{child.age}</td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="5" className="px-4 py-2 border text-center">
-                                No children data available
-                            </td>
+            <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
+                    <thead>
+                        <tr className="bg-gray-100 text-left">
+                            <th className="px-4 py-2 border">#</th>
+                            <th className="px-4 py-2 border">First Name</th>
+                            <th className="px-4 py-2 border">Last Name</th>
+                            <th className="px-4 py-2 border">Age</th>
+                            <th className="px-4 py-2 border">Birthdate</th>
+                            <th className="px-4 py-2 border">Allergies</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {childrenData ? (
+                            childrenData.map((child, idx) => (
+                                <tr key={idx} className="border-t">
+                                    <td className="px-4 py-2 border">{idx + 1}</td>
+                                    <td className="px-4 py-2 border">{child.childsFirstName}</td>
+                                    <td className="px-4 py-2 border">{child.childsLastName}</td>
+                                    <td className="px-4 py-2 border">{child.ageInt}</td>
+                                    <td className="px-4 py-2 border">{child.age}</td>
+                                    <td className="px-4 py-2 border">{child.childsAllergies}</td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="6" className="px-4 py-2 border text-center">
+                                    No children data available
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 };
