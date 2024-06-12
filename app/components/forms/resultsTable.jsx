@@ -80,7 +80,7 @@ const ResultsTable = ({ data }) => {
                             <th className="p-3">Parent's Name</th>
                             <th className="p-3">Contact</th>
                             <th className="p-3">Details</th>
-                            <th className="p-3">Address</th>
+                            {/* <th className="p-3">Address</th> */}
 
                         </tr>
                     </thead>
@@ -120,9 +120,9 @@ const ResultsTable = ({ data }) => {
                                                 <p className='text-gray-500 pl-2'> {contact.pickupFullName}</p>
                                                 <p className='text-gray-500 pl-2 mb-2'>{contact.pickupPhone}</p>
                                             </td>
-                                            <td className="px-3 py-2 border-b-2">
+                                            {/* <td className="px-3 py-2 border-b-2">
                                                 <p>{contact.address} <br /> {contact.city} {contact.state}, {contact.zipcode}</p>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     ))}
                                 </React.Fragment>
