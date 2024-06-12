@@ -72,14 +72,13 @@ const KidsCamp = () => {
                 </div>
             ))}
             </div>
-            <table className="min-w-full bg-white border border-gray-200 shadow-md">
+            <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
                 <thead>
                     <tr className="bg-gray-100 text-left">
                         <th className="px-4 py-2 border">#</th>
-                        <th className="px-4 py-2 border">Child's First Name</th>
-                        <th className="px-4 py-2 border">Child's Last Name</th>
+                        <th className="px-4 py-2 border">First Name</th>
+                        <th className="px-4 py-2 border">Last Name</th>
                         <th className="px-4 py-2 border">Age</th>
-                        <th className="px-4 py-2 border">Allergies</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +89,6 @@ const KidsCamp = () => {
                                 <td className="px-4 py-2 border">{child.childsFirstName}</td>
                                 <td className="px-4 py-2 border">{child.childsLastName}</td>
                                 <td className="px-4 py-2 border">{child.age}</td>
-                                <td className="px-4 py-2 border">{child.childsAllergies || 'None'}</td>
                             </tr>
                         ))
                     ) : (
