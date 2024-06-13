@@ -160,8 +160,8 @@ const KidsCamp = () => {
                     </details>
                 </div>
             </div>
+            <div className='text-xs text-gray-600 p-4'>Sort this table by clicking the underlined headings</div>
             <div className="overflow-x-auto">
-                <div className='text-xs text-gray-600 p-4'>Sort this table by clicking the underlined headings<br />The table sorting also updates the allergies sorting</div>
                 <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
                     <thead>
                         <tr className="bg-gray-100 text-left">
