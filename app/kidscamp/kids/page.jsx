@@ -132,9 +132,25 @@ const KidsCamp = () => {
                             <div>
                                 {childrenData ? (
                                     childrenData.map((child, idx) => (
-                                        <div key={idx}>
-                                        <div className='border-b p-2'>{child.childsLastName}, {child.childsFirstName} <span className='float-right'>{child.childsAllergies || "N/A"}</span></div>
-                                        </div>
+                                        (child.childsAllergies !== "n/a" && 
+                                         child.childsAllergies !== "No" &&
+                                         child.childsAllergies !== "No " && 
+                                         child.childsAllergies !== "Non" && 
+                                         child.childsAllergies !== "None " && 
+                                         child.childsAllergies !== "No " &&                                          
+                                         child.childsAllergies !== "None" && 
+                                         child.childsAllergies !== "N/A" && 
+                                         child.childsAllergies !== "" && 
+                                         child.childsAllergies !== undefined && 
+                                         child.childsAllergies !== "N/a" &&
+                                         child.childsAllergies !== "Немає") && (
+                                            <div key={idx}>
+                                                <div className='border-b p-2'>
+                                                    {child.childsLastName}, {child.childsFirstName}
+                                                    <span className='float-right'>{child.childsAllergies}</span>
+                                                </div>
+                                            </div>
+                                        )
                                     ))
                                 ) : (
                                     <div>Loading data...</div>
@@ -145,7 +161,7 @@ const KidsCamp = () => {
                 </div>
             </div>
             <div className="overflow-x-auto">
-                <div className='text-xs text-gray-600 p-4'>Sort this table by clicking the underlined headings<br/>The table sorting also updates the allergies sorting</div>
+                <div className='text-xs text-gray-600 p-4'>Sort this table by clicking the underlined headings<br />The table sorting also updates the allergies sorting</div>
                 <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
                     <thead>
                         <tr className="bg-gray-100 text-left">
