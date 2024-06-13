@@ -145,13 +145,14 @@ const KidsCamp = () => {
                 </div>
             </div>
             <div className="overflow-x-auto">
+                <div className='text-sm text-gray-600 p-4'>You can filter the results by clicking on the underlined table headings</div>
                 <table className="min-w-full bg-white border text-sm border-gray-200 shadow-md">
                     <thead>
                         <tr className="bg-gray-100 text-left">
                             <th className="px-4 py-2 border">#</th>
-                            <th className="px-4 py-2 border cursor-pointer" onClick={() => handleSort('childsFirstName')}>First Name</th>
-                            <th className="px-4 py-2 border cursor-pointer" onClick={() => handleSort('childsLastName')}>Last Name</th>
-                            <th className="px-4 py-2 border cursor-pointer" onClick={() => handleSort('ageInt')}>Age</th>
+                            <th className="px-4 py-2 border cursor-pointer underline" onClick={() => handleSort('childsFirstName')}>First Name</th>
+                            <th className="px-4 py-2 border cursor-pointer underline" onClick={() => handleSort('childsLastName')}>Last Name</th>
+                            <th className="px-4 py-2 border cursor-pointer underline" onClick={() => handleSort('ageInt')}>Age</th>
                             <th className="px-4 py-2 border">Birthdate</th>
                             <th className="px-4 py-2 border">Check-in</th>
                             <th className="px-4 py-2 border">Check-out</th>
