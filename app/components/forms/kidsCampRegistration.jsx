@@ -289,7 +289,7 @@ const KidsCampRegistration = () => {
                                         </div>
                                         <div className="md:col-span-5 text-right mt-8">
                                             <div className="inline-flex items-end">
-                                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                                <button disabled className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                                             </div>
                                         </div>
                                     </div>
