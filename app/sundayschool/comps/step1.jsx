@@ -2,7 +2,7 @@ import React from 'react'
 
 const step1 = ({ formData, handleInputChange }) => {
     return (
-        <div className='h-[500px]'>
+        <div className='lg:h-[500px]'>
             <p className='text-gray-400 text-sm py-2'>Step 2/2</p>
             <h2 className='text-2xl font-semibold pb-6'>Parent Information</h2>
             <div className='flex gap-4 pb-2.5'>
