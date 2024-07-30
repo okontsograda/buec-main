@@ -7,7 +7,7 @@ export async function GET(request) {
   try {
     const client = await connectToDatabase();
     const db = client.db("buec");
-    const eventCollection = db.collection('forms');
+    const eventCollection = db.collection('sundaySchoolReg24');
     const events = await eventCollection.find().toArray();
 
     return NextResponse.json({ events });
@@ -22,7 +22,7 @@ export async function POST(request) {
     // Connect to the database
     const client = await connectToDatabase();
     const db = client.db("buec");
-    const eventCollection = db.collection('forms');
+    const eventCollection = db.collection('sundaySchoolReg24');
 
     // Extract data from the request body
     const eventData = await request.json();
