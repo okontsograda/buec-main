@@ -79,8 +79,8 @@ const SundaySchool = () => {
     }
 
     return (
-        <div className='py-16'>
-            <div className='mx-auto flex md:border border-gray-200 rounded-xl md:max-w-xl lg:max-w-6xl xl:max-w-7xl md:shadow-md lg:h-[750px]'>
+        <div className='lg:py-16'>
+            <div className='mx-auto flex md:border border-gray-200 rounded-xl md:max-w-xl lg:max-w-6xl xl:max-w-7xl md:shadow-md h-screen lg:h-[750px]'>
                 <div className='hidden lg:block lg:w-1/2 rounded-l-xl bg-cover bg-[url("/bg-4.avif")]'>
                 </div>
                 <div className='w-full lg:w-1/2'>
