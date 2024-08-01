@@ -6,6 +6,7 @@ import Step2 from './comps/step2'
 
 const SundaySchool = () => {
     const [currentStep, setCurrentStep] = useState(0);
+    const [submitted, setSubmitted] = useState(false);
     const [formData, setFormData] = useState({
         parentFirstName: '',
         parentLastName: '',
@@ -54,6 +55,7 @@ const SundaySchool = () => {
     const submitForm = (e) => {
         e.preventDefault()
         console.log(formData)
+        setSubmitted(true);
 
         // Send a fetch request to update the event data in the database
         fetch('/api/submitForm', {
@@ -67,6 +69,7 @@ const SundaySchool = () => {
                 if (!response.ok) {
                     throw new Error('Failed to send event data');
                 }
+                console.log(submitted)
                 return response.json();
             })
             .then((data) => {
@@ -103,7 +106,7 @@ const SundaySchool = () => {
 
                         {/* Main Form Component */}
 
-                        <form className=''>
+                        <form className={`${submitted == true && 'hidden'}`}>
                             {currentStep == 1 &&
                                 <Step1
                                     formData={formData}
@@ -133,6 +136,13 @@ const SundaySchool = () => {
                                 }
                             </div>
                         </form>
+                        <div className={`${submitted == false && 'hidden'} flex justify-center mt-8 md:pt-24`}>
+                            <div className="flex flex-col items-center">
+                                <div className="h-24 w-24 bg-green-500 rounded-full text-5xl flex justify-center items-center text-white" >&#10003;
+                                </div>
+                                <div className="max-w-xs py-12 text-center text-gray-600">Your child has been registered for Sunday School 2024</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
