@@ -13,17 +13,15 @@ const SundaySchool = () => {
         phoneNumber: '',
         email: '',
         address: '',
-        // sameAsParents: false,
-        // emergencyFirstName: '',
-        // emergencyLastName: '',
-        // emergencyPhone: '',
         childFirstName: '',
         childLastName: '',
         age: '',
         schoolGrade: '',
         allergies: '',
         birthDate: '',
-        notes: ''
+        notes: '',
+        langPref: '',
+        dateSubmitted: Date()
     })
 
     const handleInputChange = (e) => {
@@ -33,10 +31,6 @@ const SundaySchool = () => {
             [name]: type === 'checkbox' ? checked : value
         }
         );
-
-        if (type === 'checkbox' && (checked || formData[name])) {
-            formData.emergencyFirstName = formData.parentFirstName
-        }
     }
 
     const nextStep = (e) => {
@@ -48,15 +42,12 @@ const SundaySchool = () => {
         e.preventDefault()
         if (currentStep <= 0) return
         setCurrentStep(currentStep - 1)
-        console.log('Back a step')
-        console.log(currentStep)
     }
 
     const submitForm = (e) => {
         e.preventDefault()
-        console.log(formData)
         setSubmitted(true);
-
+        console.log(formData)
         // Send a fetch request to update the event data in the database
         fetch('/api/submitForm', {
             method: 'POST',
@@ -69,7 +60,6 @@ const SundaySchool = () => {
                 if (!response.ok) {
                     throw new Error('Failed to send event data');
                 }
-                console.log(submitted)
                 return response.json();
             })
             .then((data) => {
@@ -78,12 +68,11 @@ const SundaySchool = () => {
             .catch((error) => {
                 console.error('Error updating event data:', error);
             });
-
     }
 
     return (
         <div className='lg:py-16'>
-            <div className='mx-auto flex md:border border-gray-200 rounded-xl md:max-w-xl lg:max-w-6xl xl:max-w-7xl md:shadow-md h-screen lg:h-[750px]'>
+            <div className='mx-auto flex md:border border-gray-200 rounded-xl md:max-w-xl lg:max-w-6xl xl:max-w-7xl md:shadow-md lg:h-[750px]'>
                 <div className='hidden lg:block lg:w-1/2 rounded-l-xl bg-cover bg-[url("/bg-4.avif")]'>
                 </div>
                 <div className='w-full lg:w-1/2'>
@@ -130,7 +119,7 @@ const SundaySchool = () => {
                                     </button>
                                 }
                                 {currentStep >= 1 &&
-                                    <button className='text-sm bg-blue-500 text-white py-2 px-4 rounded-lg hover:opacity-90 flex' onClick={submitForm}>
+                                    <button className='text-sm bg-blue-500 text-white py-2 px-4 rounded-lg hover:opacity-90 flex' type="submit" onClick={submitForm}>
                                         Submit
                                     </button>
                                 }
@@ -140,7 +129,7 @@ const SundaySchool = () => {
                             <div className="flex flex-col items-center">
                                 <div className="h-24 w-24 bg-green-500 rounded-full text-5xl flex justify-center items-center text-white" >&#10003;
                                 </div>
-                                <div className="max-w-xs py-12 text-center text-gray-600">Your child has been registered for Sunday School 2024</div>
+                                <div className="max-w-xs py-12 text-center text-gray-600">Your child has been registered for<br/>Sunday School 2024</div>
                             </div>
                         </div>
                     </div>
