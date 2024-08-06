@@ -20,7 +20,7 @@ const SundaySchool = () => {
         allergies: '',
         birthDate: '',
         notes: '',
-        langPref: '',
+        langPref: 'English / Aнглійська',
         dateSubmitted: Date()
     })
 
