@@ -85,7 +85,6 @@ export default function SundaySchoolTable() {
   return (
     <div className="pt-12">
       <div className="bg-white rounded-xl p-6 py-8">
-        {/* Heading */}
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <div className='md:text-2xl font-semibold pb-2 text-gray-700'>Sunday School</div>
@@ -103,7 +102,6 @@ export default function SundaySchoolTable() {
             </div>
           </div>
         </div>
-        {/* End Heading */}
 
         {/* Search Bar */}
         <div className="flex relative ml-5 md:ml-0 text-gray-500 focus-within:text-gray-900 mb-4">
