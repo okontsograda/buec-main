@@ -33,13 +33,22 @@ export default function SundaySchoolTable() {
     const order = sortColumn === column && sortOrder === 'asc' ? 'desc' : 'asc';
     setSortColumn(column);
     setSortOrder(order);
-
+  
     const sortedData = [...filteredData].sort((a, b) => {
-      if (a[column] < b[column]) return order === 'asc' ? -1 : 1;
-      if (a[column] > b[column]) return order === 'asc' ? 1 : -1;
+      let valueA = a[column];
+      let valueB = b[column];
+  
+      // Handle sorting by age as an integer
+      if (column === 'age') {
+        valueA = parseInt(valueA, 10);
+        valueB = parseInt(valueB, 10);
+      }
+  
+      if (valueA < valueB) return order === 'asc' ? -1 : 1;
+      if (valueA > valueB) return order === 'asc' ? 1 : -1;
       return 0;
     });
-
+  
     setFilteredData(sortedData);
   };
 
