@@ -4,9 +4,9 @@ import React from 'react'
 const layout = ({ children }) => {
     return (
         <>
-            <div className='flex flex-col md:flex-row relative md:gap-6 bg-gray-100'>
+            <div className='flex flex-col md:flex-row relative md:gap-6 bg-gray-100 justify-center h-screen'>
                 {/* Left panel navigation */}
-                <div className='flex items-center justify-center relative md:h-screen md:pl-12 md:w-1/5'>
+                {/* <div className='flex items-center justify-center relative md:h-screen md:pl-12 md:w-1/5'>
                     <div className='flex md:flex-col gap-4 border px-4 md:px-4 py-4 md:py-8 rounded-3xl'>
                         <Link href='/admin' className='hover:scale-110 ease-in-out duration-300 flex items-center gap-4'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
@@ -28,7 +28,7 @@ const layout = ({ children }) => {
                             <span className='hidden md:flex'>Home</span>
                         </Link>
                     </div>
-                </div>
+                </div> */}
                 {/* Right panel content */}
                 <div className="w-full md:w-4/5 px-2.5 md:px-8">
                     {children}
