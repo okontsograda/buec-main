@@ -92,7 +92,7 @@ export default function SundaySchoolTable() {
   }
 
   return (
-    <div className="pt-12">
+    <div className="pt-56">
       <div className="bg-white rounded-xl p-6 py-8">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
