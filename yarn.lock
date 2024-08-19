@@ -7,6 +7,45 @@
   resolved "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
+"@cloudinary-util/types@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@cloudinary-util/types/-/types-1.1.0.tgz"
+  integrity sha512-hlaN/+3wulAe+wGJNO2XrtFHKGrjt80F02BJFE4nEucAmv5OVYxRIQg/aroYb56X8jdSAHU1nPw9GRqApYdNog==
+
+"@cloudinary-util/url-loader@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.npmjs.org/@cloudinary-util/url-loader/-/url-loader-5.5.0.tgz"
+  integrity sha512-oFDyeRzvnawhmP1OSnXb/A09LiUyROylpTSfaNgb0eJ4oP1Lc60VMuzJsbsiLVTOf8N5pf7MHlUtM9y/Q9JrUA==
+  dependencies:
+    "@cloudinary-util/types" "1.1.0"
+    "@cloudinary-util/util" "3.1.0"
+    "@cloudinary/url-gen" "1.15.0"
+    zod "^3.22.4"
+
+"@cloudinary-util/util@^3.0.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@cloudinary-util/util/-/util-3.2.0.tgz"
+  integrity sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==
+
+"@cloudinary-util/util@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/@cloudinary-util/util/-/util-3.1.0.tgz"
+  integrity sha512-BPy6wLDf+mILZTb8zR44MJxqGp3z8Y9W4DZ0kHC+SJjQYKbYUqcdzFhDKGZNOTAO7pWhkf8E5ViZGy+A0lD44w==
+
+"@cloudinary/transformation-builder-sdk@^1.10.0":
+  version "1.14.1"
+  resolved "https://registry.npmjs.org/@cloudinary/transformation-builder-sdk/-/transformation-builder-sdk-1.14.1.tgz"
+  integrity sha512-z49To4r3byg7zHsOGKsw/nHef5B9W3wSBdDsGoY7JOj75kbvmSlP4MCkS0JU3Bv57EvYYw5ymalPz+bvRXmPlA==
+  dependencies:
+    "@cloudinary/url-gen" "^1.7.0"
+
+"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@1.15.0":
+  version "1.15.0"
+  resolved "https://registry.npmjs.org/@cloudinary/url-gen/-/url-gen-1.15.0.tgz"
+  integrity sha512-bjU67eZxLUgoRy/Plli4TQio7q6P31OYqnEgXxeN9TKXrzr6h0DeEdIUhKI9gy3HkEBWXWWJIPh7j7gkOJPnyA==
+  dependencies:
+    "@cloudinary/transformation-builder-sdk" "^1.10.0"
+
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz"
@@ -93,6 +132,11 @@
   integrity sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==
   dependencies:
     tslib "^2.4.0"
+
+"@tsconfig/recommended@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/@tsconfig/recommended/-/recommended-1.0.7.tgz"
+  integrity sha512-xiNMgCuoy4mCL4JTywk9XFs5xpRUcKxtWEcMR6FNMtsgewYTIgIR+nvlP4A4iRCAzRsHMnPhvTRrzp4AGcRTEA==
 
 "@types/debug@^4.0.0":
   version "4.1.8"
@@ -942,7 +986,17 @@ nanoid@^3.3.6:
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.6.tgz"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
 
-next@^14.0.4:
+next-cloudinary@^6.9.0:
+  version "6.9.0"
+  resolved "https://registry.npmjs.org/next-cloudinary/-/next-cloudinary-6.9.0.tgz"
+  integrity sha512-WVsVT/AY1Zud1PYGojUIQa+Wbndfh/N4pXI8MLHYgboTb9rW6YZOpgIVSJ7calMMYhC2z6xdZOfZPnObEgn4aA==
+  dependencies:
+    "@cloudinary-util/types" "1.1.0"
+    "@cloudinary-util/url-loader" "5.5.0"
+    "@cloudinary-util/util" "^3.0.0"
+    "@tsconfig/recommended" "^1.0.7"
+
+"next@^12 || ^13 || ^14 || >=15.0.0-rc", next@^14.0.4:
   version "14.1.0"
   resolved "https://registry.npmjs.org/next/-/next-14.1.0.tgz"
   integrity sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==
@@ -1174,7 +1228,7 @@ react-markdown@^8.0.7:
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-react@*, react@^18.2.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@18.2.0:
+react@*, "react@^17 || ^18 || >=19.0.0-beta", react@^18.2.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -1554,3 +1608,8 @@ yaml@^2.1.1:
   version "2.2.2"
   resolved "https://registry.npmjs.org/yaml/-/yaml-2.2.2.tgz"
   integrity sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==
+
+zod@^3.22.4:
+  version "3.23.8"
+  resolved "https://registry.npmjs.org/zod/-/zod-3.23.8.tgz"
+  integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==

@@ -1,41 +1,131 @@
-'use client'
-import { useState } from 'react'
+'use client';
+import { useEffect, useState } from 'react';
+import { CldUploadWidget } from 'next-cloudinary';
 
 const Expense = () => {
-  const [image, setImage] = useState();
+  const [expenses, setExpenses] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    date: '',
+    image: '',
+  });
 
-  const handleChange = (event) => {
-    setImage(event.target.files[0])
-  }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleUpload = (result) => {
+    setFormData({
+      ...formData,
+      image: result.info.secure_url,
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const image = new FormData();
-    image.append("file", image);
-    image.append("name", "img_01")
 
-    const response = await fetch("/api/cloudImg", {
-      method: "POST",
-      body: image
-    })
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('date', formData.date);
+    data.append('image', formData.image);
+
+    const response = await fetch('/api/cloudImg', {
+      method: 'POST',
+      body: data,
+    });
+
+    if (response.ok) {
+      console.log('Form submitted successfully');
+    } else {
+      console.error('Error submitting the form');
+    }
+  };
+
+  const fetchExpenses = async () => {
+    const response = await fetch('/api/cloudImg')
+    const expenseData = await response.json();
+
+    if (expenseData.success) {
+      setExpenses(expenseData.data)
+    } else {
+      console.log('Error fetching expenses:', expenseData.error)
+    }
+
+    console.log(expenseData)
   }
 
+  useEffect( () => {
+    fetchExpenses();
+  }, []);
+
   return (
-    <div>
-      <form>
-        <div className="flex items-center justify-center h-48 flex-col gap-8">
-          <label className="block">
-            <span className="sr-only">Choose profile photo</span>
-            <input type="file"
-              onChange={handleChange}
-              className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-          </label>
-          <button type='submit' onClick={handleSubmit} className='py-2 px-8 bg-blue-500 text-white rounded-full'>Submit</button>
+    <>
+      <div className='flex justify-center items-center flex-row'>
+        <div className='w-1/2'>
+          <div className='text-xl px-12'>Submitted Expenses</div>
+          { expenses && expenses.map( (expense) => {
+            <div key={expense._id}>
+              <div>Expense Name:</div>
+              <div className="text-sm">{expense.expName}</div>
+            </div>
+          })}
         </div>
-      </form>
+        <div className='w-1/2'>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="date">Date:</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                className=''
+                value={formData.date}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className='p-8 flex justify-center'>
+              <CldUploadWidget
+                uploadPreset="buec_expense"
+                onSuccess={handleUpload}
+              >
+                {({ open }) => {
+                  return (
+                    <button type="button" onClick={() => open()}>
+                      Upload an Image
+                    </button>
+                  );
+                }}
+              </CldUploadWidget>
+            </div>
+            {formData.image && (
+              <div className=''>
+                <img src={formData.image} alt="Uploaded Image" width="100" />
+              </div>
+            )}
+            <button type="submit" className="py-2 px-8 bg-blue-500 text-white rounded-full">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Expense
+export default Expense;
