@@ -1,7 +1,7 @@
 import EventsOverview from './components/UpcomingEvents'
 import SermonsOverview from './components/SermonsOverview'
 import LiveBanner from './components/LiveBanner'
-import customForm from './components/customForm.jsx'
+import CustomForm from './components/customForm.jsx'
 export default function Home() {
 
   return (
@@ -28,7 +28,7 @@ export default function Home() {
         <div className='mt-auto'></div>
 
       </div>
- <customForm
+ <CustomForm
       title="FormTitle"
       action="/api/submitForm"
       items={[
