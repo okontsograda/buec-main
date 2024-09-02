@@ -1,5 +1,5 @@
 // pages/api/events.js
-import { connectToDatabase, ObjectID } from '../../utils/db';
+import { connectToDatabase, ObjectID } from '../utils/db';
 import { NextResponse } from 'next/server';
 
 // Handles GET requests to /api
