@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 
 const CustomForm = ({ title, action, items }) => {
@@ -15,10 +16,11 @@ const CustomForm = ({ title, action, items }) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Submit the form data to the action endpoint
-    fetch(action, {
+    fetch('/api/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-Action': action,
       },
       body: JSON.stringify(formData),
     })
@@ -46,7 +48,7 @@ const CustomForm = ({ title, action, items }) => {
             placeholder={item.title}
             value={formData[item.title.toLowerCase().replace(/\s/g, '')] || ''}
             onChange={(e) => handleChange(e, item)}
-            className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+            className="bg-gray-50 mt-1 px-4 border rounded w-full h-10"
           />
         );
       case 'datePicker':
@@ -57,7 +59,7 @@ const CustomForm = ({ title, action, items }) => {
             placeholder={item.title}
             value={formData[item.title.toLowerCase().replace(/\s/g, '')] || ''}
             onChange={(e) => handleChange(e, item)}
-            className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+            className="bg-gray-50 mt-1 px-4 border rounded w-full h-10"
           />
         );
       case 'select':
@@ -66,7 +68,7 @@ const CustomForm = ({ title, action, items }) => {
             name={item.title.toLowerCase().replace(/\s/g, '')}
             value={formData[item.title.toLowerCase().replace(/\s/g, '')] || ''}
             onChange={(e) => handleChange(e, item)}
-            className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+            className="bg-gray-50 mt-1 px-4 border rounded w-full h-10"
           >
             {item.selectOptions.map((option, index) => (
               <option key={index} value={option}>
@@ -81,14 +83,14 @@ const CustomForm = ({ title, action, items }) => {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100 flex pt-16 justify-center">
-      <div className="container max-w-screen-lg mx-auto">
-        <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-          <h2 className="font-semibold text-xl text-gray-600 mb-6">{title}</h2>
+    <div className="flex justify-center bg-gray-100 p-6 pt-16 min-h-screen">
+      <div className="mx-auto max-w-screen-lg container">
+        <div className="bg-white shadow-lg mb-6 px-4 p-4 md:p-8 rounded">
+          <h2 className="mb-6 font-semibold text-gray-600 text-xl">{title}</h2>
           <form onSubmit={handleSubmit}>
             {items.map((item, index) => (
               <div key={index} className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 font-medium text-gray-700 text-sm">
                   {item.title}
                 </label>
                 {renderFormInput(item)}
@@ -96,7 +98,7 @@ const CustomForm = ({ title, action, items }) => {
             ))}
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white"
             >
               Submit
             </button>

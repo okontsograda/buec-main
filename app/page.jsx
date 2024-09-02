@@ -28,20 +28,6 @@ export default function Home() {
         <div className='mt-auto'></div>
 
       </div>
- <CustomForm
-      title="FormTitle"
-      action="/api/submitForm"
-      items={[
-        { type: 'text', title: 'Enter Your Name', regex: null },
-        { type: 'datePicker', title: 'Enter Your Date Of Birth', regex: null },
-        {
-          type: 'select',
-          title: 'Select Allergies',
-          selectOptions: ['option1', 'option2', 'option3', 'N/A', 'Other'],
-        },
-        { type: 'text', title: 'Phone Number', regex: null },
-      ]}
-    />
       {/* Upcoming Events Section */}
       {/* <EventsOverview /> */}
 
