@@ -1,6 +1,7 @@
 import EventsOverview from './components/UpcomingEvents'
 import SermonsOverview from './components/SermonsOverview'
 import LiveBanner from './components/LiveBanner'
+import Map from './components/map'
 
 export default function Home() {
 
@@ -26,9 +27,13 @@ export default function Home() {
         </main>
         {/* <!-- ========== END MAIN CONTENT ========== --> */}
         <div className='mt-auto'></div>
-
       </div>
-
+      <div className="flex justify-center items-center pt-10 flex-col pb-10">
+        <h1 className="text-3xl font-bold">Where We Are (THIS USES A 7 DAY TOKEN BECUASE THERE IS NO DOMAIN TO SET IT UP TO. IF THIS NEEDS PUBLISHING GIVE ME THE NEW DOMAIN AND ILL ADD THE TOKEN)</h1>
+          <div className="w-96 h-96">
+            <Map />
+          </div>
+        </div>
       {/* Upcoming Events Section */}
       {/* <EventsOverview /> */}
 
