@@ -10,6 +10,7 @@ const Contact = () => {
 
     const [status, setStatus] = useState(null);
     const [formSubmitted, setFormSubmitted] = useState(false); // Track if the form has been submitted
+    const [submitting, setSubmitting] = useState(false); // Track if the form is being submitted
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -18,6 +19,12 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Prevent multiple submissions if the form is already being submitted
+        if (submitting) return;
+
+        // Set submitting to true to prevent further submissions
+        setSubmitting(true);
 
         const timestamp = new Date().toLocaleString('en-US', {
             weekday: 'long', // e.g., 'Monday'
@@ -51,6 +58,8 @@ const Contact = () => {
             }
         } catch (error) {
             setStatus({ type: 'error', message: error.message || 'Network error occurred.' });
+        } finally {
+            setSubmitting(false); // Allow new submissions after processing
         }
     };
 
@@ -125,8 +134,9 @@ const Contact = () => {
                                     <button
                                         className="shadow bg-gray-500 hover:bg-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                         type="submit"
+                                        disabled={submitting} // Disable the button when submitting
                                     >
-                                        Send
+                                        {submitting ? 'Submitting...' : 'Send'}
                                     </button>
                                 </div>
                             </div>
