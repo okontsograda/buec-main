@@ -19,22 +19,39 @@ export async function GET(request) {
 // Handles POST requests to /api
 export async function POST(request) {
   try {
+    console.log('Here...');
     // Connect to the database
     const client = await connectToDatabase();
-    const db = client.db("buec");
+    const db = client.db('buec');
     const eventCollection = db.collection('membersQuestion');
 
     // Extract data from the request body
     const eventData = await request.json();
 
-    // Insert the eventData into the eventCollection
-    const result = await eventCollection.insertOne(eventData);
+    // Retrieve IP address
+    const forwarded = request.headers.get('x-forwarded-for'); // Adjust for Headers API
+    const ip = forwarded ? forwarded.split(',')[0] : request.ip || request.socket.remoteAddress;
+
+    console.log('Event Data:', eventData);
+    console.log('Captured IP:', ip);
+
+    // Include IP in the event data
+    const eventDataWithIP = { ...eventData, ip };
+
+    // Insert the event data with IP into the collection
+    const result = await eventCollection.insertOne(eventDataWithIP);
 
     // Return a success response
-    return NextResponse.json({ message: 'Event inserted successfully', result });
+    return NextResponse.json({
+      message: 'Event inserted successfully',
+      result,
+      ip, // Include the captured IP in the response
+    });
   } catch (error) {
+    console.error('Error:', error);
+
     // Return an error response if something goes wrong
-    return NextResponse.json({ message: 'Error inserting event', error });
+    return NextResponse.json({ message: 'Error inserting event', error }, { status: 500 });
   }
 }
 
@@ -68,7 +85,7 @@ export async function PUT(request) {
 
   } catch (error) {
     // Return an error response if something goes wrong
-    return NextResponse.json({ message: 'Error updating event ' + error  });
+    return NextResponse.json({ message: 'Error updating event ' + error });
   }
 }
 
